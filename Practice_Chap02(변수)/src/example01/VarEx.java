@@ -12,6 +12,7 @@ public class VarEx {
 		
 		
 		System.out.println("ch : " + ch);
+		System.out.println("float : " + result2);
 		System.out.println(year + age);
 		String str = new String("Java");
 		System.out.println(str);
