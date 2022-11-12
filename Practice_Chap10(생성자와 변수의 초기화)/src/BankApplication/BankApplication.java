@@ -1,5 +1,6 @@
 package BankApplication;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class BankApplication {
@@ -25,12 +26,15 @@ public class BankApplication {
 				
 			}
 			else if (choice == 2) {
+				accountList();
 				
 			}
 			else if(choice == 3) {
+				deposit();
 				
 			}
 			else if(choice == 4) {
+				withDraw();
 				
 			}
 			else if(choice == 5) {
@@ -70,6 +74,91 @@ public class BankApplication {
 		}
 		
 		
+	}
+	
+	public static void accountList() {
+		System.out.println("-------------------");
+		System.out.println("계좌목록을 출력합니다.");
+		System.out.println("-------------------");
+		
+		for(int i = 0; i<accountArray.length; i++) {
+			Account account = accountArray[i];
+			//계좌에 대한 내용이 존재한다면, 
+			if(account != null) {
+				System.out.print(account.getAno());
+				System.out.print("\t");
+				System.out.print(account.getOwner());
+				System.out.print("\t");
+				System.out.print(account.getBalance());
+				System.out.println(" ");
+			}
+		}
+		
+	}
+	
+	//예금하기 
+	public static void deposit() {
+		System.out.println("-------------------");
+		System.out.println("예금합니다.");
+		System.out.println("-------------------");
+		
+		System.out.print("계좌번호 입력 : ");
+		String ano = sc.next();
+		System.out.print("예금액 : ");
+		int money = sc.nextInt();
+		
+		Account account = findAccount(ano);
+		
+		if(account == null ) {
+			System.out.println("계좌가 없습니다. ");
+			return;
+		}
+		else {
+			account.setBalance(account.getBalance() + money);
+			System.out.println("예금 성공. 현재 잔액 : " + account.getBalance());
+		}
+		
+		
+	}
+	
+	
+	//출금
+	public static void withDraw() {
+		System.out.println("-------------------");
+		System.out.println("출금합니다.");
+		System.out.println("-------------------");
+		
+		System.out.print("계좌번호 입력 : ");
+		String ano = sc.next();
+		System.out.print("출금액 : ");
+		int money = sc.nextInt();
+		
+		Account account = findAccount(ano);
+		
+		if(account == null ) {
+			System.out.println("계좌가 없습니다. ");
+			return;
+		}
+		else {
+			account.setBalance(account.getBalance() - money);
+			System.out.println("출금 성공. 현재 잔액 : " + account.getBalance());
+		}
+		 
+	}
+	
+	public static Account findAccount(String ano) {
+		Account account = null;
+		
+		for(int i=0; i<accountArray.length; i++) {
+			if(accountArray[i] != null) {
+				//매개변수로 넘어온 계좌번호와 동일하다면...
+				if(accountArray[i].getAno().equals(ano)) {
+					 account = accountArray[i];
+					 break;
+				}
+			}
+		}
+		return account;
 	}
 
 }
