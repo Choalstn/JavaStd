@@ -44,9 +44,9 @@ public class BankApplication {
 	}
 	
 	public static void createAccount() {
-		System.out.println("-------------------------------------------------");
+		System.out.println("-------------------");
 		System.out.println("계좌를 생성합니다.");
-		System.out.println("-------------------------------------------------");
+		System.out.println("-------------------");
 		
 		System.out.print("계좌 번호 : ");
 		String ano = sc.next();
@@ -63,7 +63,7 @@ public class BankApplication {
 			 if(accountArray[i] == null) {
 				 accountArray[i] = newAccount;
 				 System.out.println("계좌가 생성되었습니다.");
-				 System.out.println(accountArray[i].getAno() + ", " + accountArray[i].getOwner() + ", " + accountArray[i].getBalance());
+				 //System.out.println(accountArray[i].getAno() + ", " + accountArray[i].getOwner() + ", " + accountArray[i].getBalance());
 				 break;
 				 
 			 }
